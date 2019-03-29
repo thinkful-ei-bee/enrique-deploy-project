@@ -17,14 +17,22 @@ export default class App extends React.Component {
   componentDidMount() {} 
 
 
- 
+  renderResults=(x)=>{
+    let listHtml;
+     if (x !== undefined){
+         console.log(x)
+         listHtml = x.map((item, index) => <li key = {index}>{item.name}</li>)
+       return listHtml
+       } 
+     
+ }
 
 
   setSubmit = input => {
     console.log(input)
+    // make another copy : const prevState....
     this.setState({
       resultList:[
-        ...this.state.resultList,
         input
       ]
     }, ()=>{ console.log(this.state.resultList)}
