@@ -1,25 +1,38 @@
 import React from 'react';
-import {Router} from 'react-router-dom';
-import Main from './Main';
+// import {Router} from 'react-router-dom';
+import Results from './Results';
 import './App.css';
-import CharSearch from "./CharSearch";
+import SearchForm from "./SearchForm";
+import config from './config';
 
 export default class App extends React.Component {
   constructor(props) { 
       super(props);
       this.state = {
-        searchCharacter:[],
-        characterList:[],
+        searchTerm:[],
+        resultList:[],
       };
   }
 
   componentDidMount() {} 
 
-  handleCharSubmit = name => {
+
+ 
+filterResults= (name, array) =>{
+  console.log(array)
+  let results = [];
+  
+  let filtered = array.results.filter((item) =>  item.name === name); //how can i get access to page 2, 3 etc
+  results.push(filtered);
+  console.log(results);
+  return results;
+}
+
+  setSubmit = input => {
     this.setState({
-      searchCharacter:[
-        ...this.state.searchCharacter,
-        name
+      searchTerm:[
+        ...this.state.searchTerm,
+        input
       ]
     })
   }
@@ -29,8 +42,8 @@ export default class App extends React.Component {
         <header>
           <h1>STAR WARS SEARCH</h1>
           </header>
-          <CharSearch searchChar= {this.state.handleCharSubmit}/>
-          <Main>Results</Main>
+          <SearchForm setSubmit={this.setSubmit} filterResults={this.filterResults}/>
+          <Results list={this.resultList}>Results</Results>
       </div>);
   }
   
