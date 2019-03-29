@@ -3,7 +3,7 @@ import React from 'react';
 import Results from './Results';
 import './App.css';
 import SearchForm from "./SearchForm";
-import config from './config';
+
 
 export default class App extends React.Component {
   constructor(props) { 
@@ -18,23 +18,17 @@ export default class App extends React.Component {
 
 
  
-filterResults= (name, array) =>{
-  console.log(array)
-  let results = [];
-  
-  let filtered = array.results.filter((item) =>  item.name === name); //how can i get access to page 2, 3 etc
-  results.push(filtered);
-  console.log(results);
-  return results;
-}
+
 
   setSubmit = input => {
+    console.log(input)
     this.setState({
-      searchTerm:[
-        ...this.state.searchTerm,
+      resultList:[
+        ...this.state.resultList,
         input
       ]
-    })
+    }, ()=>{ console.log(this.state.resultList)}
+    )
   }
 
   render() { 
@@ -42,8 +36,8 @@ filterResults= (name, array) =>{
         <header>
           <h1>STAR WARS SEARCH</h1>
           </header>
-          <SearchForm setSubmit={this.setSubmit} filterResults={this.filterResults}/>
-          <Results list={this.resultList}>Results</Results>
+          <SearchForm setSubmit={this.setSubmit} />
+          <Results list={this.state.resultList}>Results</Results>
       </div>);
   }
   

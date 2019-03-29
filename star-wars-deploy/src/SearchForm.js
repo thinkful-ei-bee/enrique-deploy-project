@@ -10,7 +10,7 @@ export default class SearchForm extends React.Component {
     console.log(url)
     fetch(url)
     .then(res => res.json())
-    .then(data => console.log(data));
+    .then(data => this.props.setSubmit(data.results));
 
 
 }
