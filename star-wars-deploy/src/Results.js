@@ -1,23 +1,27 @@
 import React from 'react';
 
-export default class Results extends React.Component{
+export default function Results (props){
   
-    renderResults=(x)=>{
-        
-        x.map(item => <li>{item.name}</li>)
-    }
-    render(){
-        if (this.props.list!== undefined){
-            console.log(this.props.list)
+   function renderResults(x){
+       let listHtml;
+        if (x !== undefined){
+            console.log(x)
+            listHtml = x.map((item, index) => <li key = {index}>{item.name}</li>)
+          return listHtml
           } 
+        
+    }
+    
+
         return(
+           
             <ul>
     
-                {this.props.list!== undefined && this.renderResults(this.props.list)}
+                {renderResults(props.list[0])}
     
             </ul>
             
         )
-    }
+  
     
 }
