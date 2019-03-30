@@ -1,3 +1,3 @@
 export default {
-    API_ENDPOINT : 'https://swapi.co/api/'
+    API_ENDPOINT : process.env.REACT_APP_API_KEY
 }
