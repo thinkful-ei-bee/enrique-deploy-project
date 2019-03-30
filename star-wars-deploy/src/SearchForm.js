@@ -29,7 +29,8 @@ handleChange=(e)=>{
   
   this.setState({[e.target.name]: e.target.value})
 }
-  
+  //MAKE ONE FUNCTION THAT VALIDATES FOR ALL... CHECK AGAINST NUMBERS AND OTHER NON-LETTERS
+  //PROVIDE A DEFAULT MESSAGE IF INPUT RETURNS WITH NO RESULTS
 
     componentDidMount() {} 
   
