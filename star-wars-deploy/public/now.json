@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias":" quique-star-wars-app",
+    "name": "star-wars",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
